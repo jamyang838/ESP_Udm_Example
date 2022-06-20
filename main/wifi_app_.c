@@ -14,10 +14,10 @@
 #include "esp_wifi.h"
 #include "lwip/netdb.h"
 
+#include "http_server.h"
 #include "rgb_led.h"
 #include "tasks_common.h"
 #include "wifi_app.h"
-#include "http_server.h"
 
 // Tag used for ESP serial console messages
 static const char TAG [] = "wifi_app";
@@ -222,7 +222,7 @@ void wifi_app_start(void)
 	rgb_led_wifi_app_started();
 
 	// Disable default WiFi logging messages
-	esp_log_level_set("wifi",  ESP_LOG_NONE);
+	esp_log_level_set("wifi", ESP_LOG_NONE);
 
 	// Create message queue
 	wifi_app_queue_handle = xQueueCreate(3, sizeof(wifi_app_queue_message_t));
